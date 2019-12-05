@@ -1,9 +1,14 @@
 ################################################################################
-# This simple module illustrates how to implement an own ring using the
+# This simple Julia module illustrates how to implement an own ring using the
 # AbstractAlgebra/Nemo computer algebra packages.
-# The goal was to be able to compute Hermite and Smith normal forms of matrices
-# over the Gaussian integers. To this end, we need to implement the ring and
-# its Euclidean division with remainder. The rest is then handled by
+#
+# I wanted to compute Hermite and Smith normal forms of matrices
+# over the Gaussian integers (I unfortunately gave an exercise in class about
+# this). The problem is that if you create the Gaussian integers as a maximal
+# order in a computer algebra system, it doesn't know about the Euclidean ring
+# structure, so you can't compute normal forms. AbstractAlgebra supports
+# generic ring types and algorithms, and once you implement all the necessary
+# functions, everything else is handled by the generic algorithms in
 # AbstractAlgebra.
 #
 # By Ulrich Thiel, 2019

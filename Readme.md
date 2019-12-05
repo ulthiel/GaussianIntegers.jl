@@ -15,16 +15,16 @@ julia> using GaussianIntegers
 julia> R = GaussianIntegerRing() #create the ring of Gaussian integers
 Ring of Gaussian integers
 
-julia> x=R(2,1) #Create the element 2+i*1
+julia> x=R(2,1) #Create the Gaussian integer 2+i*1
 (2, 1)
 
-julia> x+x #Addition of elements
+julia> x+x #Addition
 (4, 2)
 
-julia> x*x #Multiplication of elements
+julia> x*x #Multiplication
 (3, 4)
 
-julia> A=matrix(R,2,2,[R(2,-1), R(2,0), R(7,-1), R(3,1)]) #a 2x2-matrix
+julia> A=matrix(R,2,2,[R(2,-1), R(2,0), R(7,-1), R(3,1)]) #creating a 2x2-matrix
 [(2, -1)  (2, 0)]
 [(7, -1)  (3, 1)]
 
