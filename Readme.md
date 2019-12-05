@@ -6,6 +6,13 @@ This simple [Julia](https://julialang.org) module illustrates how to implement a
 I wanted to compute Hermite and Smith normal forms of matrices
 over the Gaussian integers (I unfortunately gave an exercise in class about this). The problem is that if you create the Gaussian integers as a maximal order in a computer algebra system, it doesn't know about the Euclidean ring structure, so you can't compute normal forms. AbstractAlgebra supports generic ring types and algorithms, and once you implement all the necessary functions, everything else is handled by the generic algorithms in AbstractAlgebra.
 
+## Installation
+```julia
+julia> using Pkg
+
+julia> Pkg.add(PackageSpec(url="https://github.com/ulthiel/GaussianIntegers.jl", rev="master" ))
+```
+
 ## Usage
 
 ```julia
@@ -28,7 +35,7 @@ julia> A=matrix(R,2,2,[R(2,-1), R(2,0), R(7,-1), R(3,1)]) #creating a 2x2-matrix
 [(2, -1)  (2, 0)]
 [(7, -1)  (3, 1)]
 
-julia> hnf(A) #the Hermite normal form of A
+julia> hnf(A) #the Hermite normal form of A (hnf_with_transform will also return the transformation matrix)
 [(1, 2)  (1, -1)]
 [(0, 0)   (3, 1)]
 
