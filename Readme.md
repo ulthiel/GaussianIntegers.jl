@@ -6,7 +6,7 @@ This simple [Julia](https://julialang.org) module illustrates how to implement a
 I wanted to compute Hermite and Smith normal forms of matrices
 over the Gaussian integers (I (un-)fortunately gave an exercise in class about this). The problem is that if you create the Gaussian integers as a maximal order in a computer algebra system, it doesn't know about the Euclidean ring structure, so you can't compute division with remainder and normal forms. AbstractAlgebra supports generic ring types and algorithms, and once you implement all the necessary functions, everything else is handled by AbstractAlgebra.
 
-As a system of representatives of non-associates I have chosen the points in the first quadrant (this is handled by the function ```canonical_unit``` of AbstractAlgebra). The division with remainder (which I do geometrically) automatically yields a system of representatives of residues and I (don't have to) deal with this any further.
+As a system of representatives of non-associates I have chosen the points in the first quadrant (this is handled by the function ```canonical_unit``` of AbstractAlgebra). The division with remainder (which I do geometrically) automatically defines a system of representatives of residues and I don't (have to) deal with this any further.
 
 ## Installation
 ```julia
