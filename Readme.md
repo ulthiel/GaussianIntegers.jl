@@ -49,4 +49,4 @@ julia> snf(A) #The Smith normal form of A
 
 ## References
 
-[^1]: Adkins, W. A. & Weintraub, S. H. (1992). *Algebra*). Chapter 5.
+[^1]: Adkins, W. A. & Weintraub, S. H. (1992). *Algebra*. Chapter 5.
