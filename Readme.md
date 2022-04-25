@@ -1,27 +1,28 @@
 # GaussianIntegers.jl
 
-This simple [Julia](https://julialang.org) module illustrates how to implement an own ring using the
-[AbstractAlgebra](https://github.com/Nemocas/AbstractAlgebra.jl)/[Nemo](https://github.com/Nemocas/Nemo.jl) computer algebra packages.
+This simple [Julia](https://julialang.org) module illustrates how to implement the ring of [Gaussian integers](https://en.wikipedia.org/wiki/Gaussian_integer) using the generic (Euclidean) ring interface of [AbstractAlgebra.jl](https://github.com/Nemocas/AbstractAlgebra.jl). This allows for example to compute Hermite and Smith normal forms of matrices over the Gaussian integers without further ado.
 
-I wanted to compute Hermite and Smith normal forms of matrices
-over the Gaussian integers (I (un-)fortunately gave an exercise in class about this). The problem is that if you create the Gaussian integers as a maximal order in a computer algebra system, it doesn't know about the Euclidean ring structure, so you can't compute division with remainder and normal forms. AbstractAlgebra supports generic ring types and algorithms, and once you implement all the necessary functions, everything else is handled by AbstractAlgebra.
+By [Ulrich Thiel](https://ulthiel.com/math) (University of Kaiserslautern), 2019 (updated 2022)
 
-As a system of representatives of non-associates I have chosen the points in the first quadrant (this is handled by the function ```canonical_unit``` of AbstractAlgebra). The division with remainder (which I do geometrically) automatically defines a system of representatives of residues and I don't (have to) deal with this any further.
+## Background
+
+In my algebraic number theory course I (un)fortunately gave as an exercise to compute Hermite and Smith normal forms of matrices over the Gaussian integers to illustrate that the theory works over Euclidean rings in general and not just over ℤ and K[X].[^1] I noticed that by hand it is easy to make mistakes and therefore I wanted to verify my results with the computer. But if one creates the Gaussian integers as a maximal order in a computer algebra system like Magma, the system doesn't know about the Euclidean ring structure, so one can't compute division with remainder and normal forms of matrices. AbstractAlgebra.jl supports generic (Euclidean) rings and algorithms, and once all the basic ring functions are implemented, everything else is handled without further ado.
+
+**Remark.** The Hermite normal form is only unique after fixing a choice of a system of representatives of non-associates and of residues. In the implementation I have chosen the points in the first quadrant as representatives of non-associates—this is handled by the function ```canonical_unit```. The division with remainder algorithm (which I do geometrically) *by itself* defines a system of representatives of residues, so we don't (have to) deal with this any further.
 
 ## Installation
 ```julia
 julia> using Pkg
 
-julia> Pkg.add(PackageSpec(url="https://github.com/ulthiel/GaussianIntegers.jl", rev="master" ))
+julia> Pkg.add(url="https://github.com/ulthiel/GaussianIntegers.jl")
 ```
 
 ## Usage
 
 ```julia
-julia> using AbstractAlgebra
-julia> using GaussianIntegers
+julia> using GaussianIntegers, AbstractAlgebra
 
-julia> R = GaussianIntegerRing() #create the ring of Gaussian integers
+julia> R = GaussianIntegerRing() #Create the ring of Gaussian integers
 Ring of Gaussian integers
 
 julia> x=R(2,1) #Create the Gaussian integer 2+i*1
@@ -33,15 +34,19 @@ julia> x+x #Addition
 julia> x*x #Multiplication
 (3, 4)
 
-julia> A=matrix(R,2,2,[R(2,-1), R(2,0), R(7,-1), R(3,1)]) #creating a 2x2-matrix
+julia> A=matrix(R,2,2,[(2,-1), (2,0), (7,-1), (3,1)]) #Creating a 2x2-matrix
 [(2, -1)  (2, 0)]
 [(7, -1)  (3, 1)]
 
-julia> hnf(A) #the Hermite normal form of A (hnf_with_transform will also return the transformation matrix)
+julia> hnf(A) #The Hermite normal form of A (hnf_with_transform will also return the transformation matrix)
 [(1, 2)  (1, -1)]
 [(0, 0)   (3, 1)]
 
-julia> snf(A) #the Smith normal form of A
-[(0, 1)  (0, 0)]
+julia> snf(A) #The Smith normal form of A
+[(1, 0)  (0, 0)]
 [(0, 0)  (1, 7)]
 ```
+
+## References
+
+[¹]:  Adkins, W. A. & Weintraub, S. H. (1992). *Algebra*). Chapter 5.
