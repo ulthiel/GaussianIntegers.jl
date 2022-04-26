@@ -1,7 +1,7 @@
 name = "GaussianIntegers"
 uuid = "814f2dd7-e056-4194-98c2-60692011a20c"
 authors = ["Ulrich Thiel <thiel@mathematik.uni-kl.de>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 AbstractAlgebra = "c3fe647b-3220-5bb0-a1ea-a7954cac585d"

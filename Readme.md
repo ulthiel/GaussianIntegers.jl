@@ -6,9 +6,9 @@ By [Ulrich Thiel](https://ulthiel.com/math) (University of Kaiserslautern), 2019
 
 ## Background
 
-In my algebraic number theory course I (un)fortunately gave as an exercise to compute Hermite and Smith normal forms of matrices over the Gaussian integers to illustrate that the theory works over Euclidean rings in general and not just over ℤ and K[X].[^1] I noticed that by hand it is easy to make mistakes and therefore I wanted to verify my results with the computer. But if one creates the Gaussian integers as a maximal order in a computer algebra system like Magma, the system doesn't know about the Euclidean ring structure, so one can't compute division with remainder and normal forms of matrices. AbstractAlgebra.jl supports generic (Euclidean) rings and algorithms, and once all the basic ring functions are implemented, everything else is handled without further ado.
+In my [course](https://ulthiel.com/math/teaching/ant-19/) on algorithmic algebraic number theory I (un)fortunately gave as an exercise to compute Hermite and Smith normal forms of matrices over the Gaussian integers in order to illustrate that the theory works over Euclidean rings in general and not just over ℤ and K[X].[^1] I noticed that by hand it is easy to make mistakes and therefore I wanted to verify my results with the computer. But if one creates the Gaussian integers as a maximal order in a computer algebra system like Magma, the system doesn't know about the Euclidean ring structure, so one cannot compute division with remainder and normal forms of matrices. AbstractAlgebra.jl supports generic (Euclidean) rings and algorithms, and once all the basic ring functions are implemented, everything else is handled without further ado. Nice!
 
-**Remark.** The Hermite normal form is only unique after fixing a choice of a system of representatives of non-associates and of residues. In the implementation I have chosen the points in the first quadrant as representatives of non-associates—this is handled by the function ```canonical_unit```. The division with remainder algorithm (which I do geometrically) *by itself* defines a system of representatives of residues, so we don't (have to) deal with this any further.
+**Remark.** The Hermite normal form is only unique after fixing a system of representatives of non-associates and of residues. In the implementation I have chosen the points in the first quadrant and the positive real line as representatives of non-associates—this is handled by the function ```canonical_unit```. The explicit division with remainder algorithm *by itself* defines a system of representatives of residues, so we do not (have to) deal with this any further.
 
 ## Installation
 ```julia
@@ -34,7 +34,7 @@ julia> x+x #Addition
 julia> x*x #Multiplication
 (3, 4)
 
-julia> A=matrix(R,2,2,[(2,-1), (2,0), (7,-1), (3,1)]) #Creating a 2x2-matrix
+julia> A=matrix(R,2,2,[(2,-1), (2,0), (7,-1), (3,1)]) #Creating a 2x2-matrix of Gaussian integers
 [(2, -1)  (2, 0)]
 [(7, -1)  (3, 1)]
 
