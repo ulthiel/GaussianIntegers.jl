@@ -1,6 +1,6 @@
 # GaussianIntegers.jl
 
-This simple [Julia](https://julialang.org) module illustrates how to implement the ring of [Gaussian integers](https://en.wikipedia.org/wiki/Gaussian_integer) using the generic (Euclidean) ring interface of [AbstractAlgebra.jl](https://github.com/Nemocas/AbstractAlgebra.jl). This allows for example to compute Hermite and Smith normal forms of matrices over the Gaussian integers without further ado.
+This simple [Julia](https://julialang.org) package illustrates how to implement the ring of [Gaussian integers](https://en.wikipedia.org/wiki/Gaussian_integer) using the generic (Euclidean) ring interface of [AbstractAlgebra.jl](https://github.com/Nemocas/AbstractAlgebra.jl). This allows for example to compute Hermite and Smith normal forms of matrices over the Gaussian integers without further ado.
 
 By [Ulrich Thiel](https://ulthiel.com/math) (University of Kaiserslautern), 2019 (updated 2022)
 
